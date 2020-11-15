@@ -1,4 +1,7 @@
-fieldset{
-    width: 500px; 
+div{
     text-align: center;
+}
+
+.login{
+    padding: 10em;
 }

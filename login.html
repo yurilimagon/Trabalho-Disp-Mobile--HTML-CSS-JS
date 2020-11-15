@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="/src/style.css">
     <title>Fatec Lins</title>
 </head>
 <body>
     <div>
-        <div>
+        <div class="ui placeholeder segment">
             <h1>Fatec Lins</h1>
-            <form>
-                <fieldset>
+                <form class="ui form">
                     
-                    <div>
-                        <label for="userLogin">Usuário</label>
+                    <div class="inline field">
+                        <label for="userLogin"></label>
                         <input id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
                     </div>
                     
-                    <div>
-                        <label for="userPassword">Senha</label>
+                    <div class="inline field">
+                        <label for="userPassword"></label>
                         <input id="userPassword" type="password" aria-label="Senha" placeholder="Senha">
                     </div>
                     
-                    <a href="#">Esqueci minha senha</a>
+                    <div class="inline field">
+                        <a href="#">Esqueci minha senha</a>
+                        
+                        <input class="ui green button" type="submit" value="Entrar">
+                        <p class="txt-center ls-login-signup"></p>
+                    </div>
                     
-                    <input type="submit" value="Entrar">
-                    <p class="txt-center ls-login-signup"></p>
                     
-                </fieldset>
-            </form>
+                </>
         </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </html>
