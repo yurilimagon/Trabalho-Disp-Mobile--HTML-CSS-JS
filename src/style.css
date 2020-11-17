@@ -3,7 +3,8 @@ div {
 }
 
 .login {
-    padding: 20em;
+    padding: 20%;
+    align-items: center;
 }
 .lateral {
     width: 10%;
@@ -11,15 +12,18 @@ div {
     display: inline-block;
 }
 
-.botao-menu {
-    padding: 9999px;
-}
-
 .fundo {
     background-color: grey;
 }
 
 .topo {
-    padding-top: 1.7em;
-    height: 100%;
+    height: 8%;
+    align-items: center;
+}
+
+.ui.grid{
+    padding:0 !important;
+}
+.pushable.segment{
+    margin:0 !important;
 }
