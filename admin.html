@@ -7,13 +7,31 @@
     <link rel="stylesheet" href="/src/style.css">
     <title>Fatec Lins</title>
 </head>
-<body>
-    <form class="ui segment">
-        <div class="inline field">
+<body class="fundo">
+    <form class="ui equal width center aligned padded grid">
+        <div class="black column">
+            <div class="lateral">
+                Fatec Lins
+            </div>
             Bem Vindo, Usuário!
-            <a id="btn-sair" class="ui red button">Sair</a>                     
+            <div class="lateral">
+                <a id="btn-sair" class="ui red button">Sair</a>                     
+            </div>
         </div>
     </form>
+
+    <div id="mn-lateral" class="ui inverted red secondary vertical menu" style="height: 100%; margin-top: 0%; text-align: left;">
+        <a href="#" class="item">Home</a>
+        <a href="#" class="item">Calendário</a>
+        <div class="ui dropdown item">
+          <i class="dropdown icon"></i>Solicitações
+           <div class="menu inverted red">
+            <a href="#" class="item" style="color: white;">Consultar</a>
+            <a href="#" class="item" style="color: white;">Fazer Solicitação</a>
+          </div>
+        </div>
+      </div>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
@@ -21,5 +39,7 @@
     $('#btn-sair').click(function(){
         window.open("login.html","_self");
     });
+
+    $('.ui.dropdown').dropdown();
 </script>
 </html>

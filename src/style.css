@@ -1,7 +1,16 @@
-div{
+div {
     text-align: center;
 }
 
-.login{
+.login {
     padding: 20em;
+}
+.lateral {
+    width: 10%;
+    height: 100%;
+    display: inline-block;
+}
+
+.botao-menu {
+    padding: 9999px;
 }
