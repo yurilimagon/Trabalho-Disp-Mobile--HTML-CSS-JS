@@ -3,6 +3,7 @@ $(document).ready(function(){
     let usuario = [];
     function init(){
         inicializarComponentes();
+        telaInicial();
         logar();
         sair();
     }
@@ -10,6 +11,11 @@ $(document).ready(function(){
     function inicializarComponentes(){
         $('.dropdown-toggle').dropdown();
         $('.collapse').collapse();
+    }
+
+    function telaInicial(){
+        // $('#tela-login').hide();
+        $('#tela-aluno').hide();
     }
 
     function sair(){
@@ -20,7 +26,6 @@ $(document).ready(function(){
     }
 
     function logar(){
-        $('#tela-aluno').hide();
         $('#btn-entrar').click(function(){
             let ra = $('#inputUsuario').val();
             let senha = $('#inputSenha').val();
@@ -43,7 +48,7 @@ $(document).ready(function(){
                         let ra = usuario[0].ra;
                         let nome = usuario[0].nome;
                         let email = usuario[0].email;
-                        console.log(nome);
+                        // console.log(nome);
                         $('#lb-nome').text(nome);
                         $('#lb-id').text(ra);
                         $('#lb-email').text(email);
@@ -78,17 +83,17 @@ $(document).ready(function(){
             $.each(data, function(chave, valor){
 
                 dados += `<div class="card">
-                            <div class="card-header" id="${valor.idDisciplina}">
+                            <div class="card-header bg-danger" id="${valor.idDisciplina}">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" 
+                                <a class="btn btn-link btn-block text-left" style="color: white;" data-toggle="collapse" 
                                         data-target="#collapse${valor.idDisciplina}" aria-expanded="true" aria-controls="${valor.idDisciplina}">
-                                ${valor.disciplina}
-                                </button>
+                                        <i class="material-icons" style="font-size: 1rem;">keyboard_arrow_right </i>${valor.disciplina}
+                                </a>
                             </h2>
                             </div>
                         
-                            <div id="collapse${valor.idDisciplina}" class="collapse hide" aria-labelledby="${valor.idDisciplina}" 
-                                 data-parent="#accordionExample">
+                            <div id="collapse${valor.idDisciplina}" class="collapse hide" style="background-color: #cfcdcd;" aria-labelledby="${valor.idDisciplina}" 
+                                 data-parent="#accordion">
                                 <div class="card-body text-left">
                                     <p>Presença: ${valor.presenca} </p>
                                     <p>Faltas: ${valor.falta}</p>
@@ -102,17 +107,17 @@ $(document).ready(function(){
                 
             });
             conteudo = `
-                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        <div class="container d-flex justify-content-center flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                             <h1 class="h2">Disciplinas</h1>
                         </div >
-                        <div class="accordion" id="accordionExample">${dados}</div>`
+                        <div class="accordion" id="accordion">${dados}</div>`
             $('#conteudo').html(conteudo);
         });
     }
 
     function exibeHome(){
-        conteudo = `<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Bem Vindo, Aluno!</h1>
+        conteudo = `<div class="justify-content-center pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Bem Vindo, ${usuario[0].nome}</h1>
                     </div >`
         $('#conteudo').html(conteudo);
     }

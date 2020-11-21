@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="stylesheet" href="./src/signin.css">
@@ -15,13 +16,13 @@
     </head>
 
     <!-- BODY -->
-    <body class="text-center">
+    <body>
 
       
-      <div id="tela-aluno" style="width: 100%; position: -webkit-sticky;">
+      <div id="tela-aluno" class="text-center" style="width: 100%; min-width: 250px;">
         <!--  -->
         <nav class="navbar navbar-dark sticky-top bg-danger flex-md-nowrap p-0">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" data-toggle="collapse" data-target="#menu-content">Área do Aluno</a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" style="min-width: 350px;" data-toggle="collapse" data-target="#menu-content">Área do Aluno</a>
             <img src="./img/logo-fatec-footer.png" width="75" height="30">
             <!-- <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
@@ -32,82 +33,84 @@
         <!--  -->
         <div class="container-fluid">
         <div class="row">
-            <nav id="menu-content" class="col-md-2 bg-light menu-content collapse out">
-            <div class="sidebar-sticky">
-
-                <h6 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>
-                    Nome: 
-                    <span id="lb-nome">Nome Aluno</span>
-                </span>
-                </h6>
-                <h6 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>
-                    ID: 
-                    <span id="lb-id">ID:</span>
-                </span>
-                </h6>
-                <h6 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>
-                        Email: 
-                        <span id="lb-email">Email:</span>
-                    </span>
-                </h6>
-                <br>
-                <ul class="nav flex-column border-top border-danger mb-2 sidebar">
-                    <li class="nav-item d-flex">
-                        <a id="btn-home" class="nav-link active" href="#">
-                        <span data-feather="home"></span>
-                        Home
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">
-                        <span data-feather="calendar"></span>
-                        Calendário
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a id="btn-disciplinas" class="nav-link" href="#">
-                        <span data-feather="file"></span>
-                        Disciplinas
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">
-                        <span data-feather="users"></span>
-                        Solicitações
-                        </a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="nav-link" href="#">
-                        <span data-feather="user"></span>
-                        Fazer Solicitação
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav flex-column justify-content-center">
-                    <button id="btn-sair" type="button" class="btn btn-danger" style="width: 100%;">Sair</button>
-                </ul>
+            <div class="col-md-5 m-0 p-0">
+                <nav id="menu-content" class="col-md-2 menu-content collapse out">
+                    <div class="sidebar-sticky" style="min-width: 300px;">
+        
+                        <h6 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span data-toggle="tooltip" title="Aluno">
+                            <i class="material-icons" style="pointer-events: none;">account_circle</i>
+                            <span id="lb-nome">Nome Aluno</span>
+                        </span>
+                        </h6>
+                        <h6 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span data-toggle="tooltip" title="RA">
+                            <i class="material-icons" style="pointer-events: none;">fingerprint</i>
+                            <span id="lb-id">ID:</span>
+                        </span>
+                        </h6>
+                        <h6 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span data-toggle="tooltip" title="Email">
+                                <i class="material-icons" style="pointer-events: none;">mail_outline</i>
+                                <span id="lb-email">Email:</span>
+                            </span>
+                        </h6>
+                        <br>
+                        <ul class="nav flex-column border-top border-danger mb-2 sidebar">
+                            <li class="nav-item d-flex">
+                                <a id="btn-home" class="nav-link active" href="#">
+                                <span data-feather="home"></span>
+                                Home
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex">
+                                <a class="nav-link" href="#">
+                                <span data-feather="calendar"></span>
+                                Calendário
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex">
+                                <a id="btn-disciplinas" class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                Disciplinas
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex">
+                                <a class="nav-link" href="#">
+                                <span data-feather="users"></span>
+                                Solicitações
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex">
+                                <a class="nav-link" href="#">
+                                <span data-feather="user"></span>
+                                Fazer Solicitação
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column justify-content-center">
+                            <button id="btn-sair" type="button" class="btn btn-danger" style="width: 100%; margin-bottom: 45px;">Sair</button>
+                        </ul>
+                    </div>
+                    </nav>
             </div>
-            </nav>
+            <div class="col-md-7 container">
+                <div id="conteudo" class="justify-content-center">
+                    <!-- CONTEÚDO AQUI!!! -->                
+                </div>
+            </div>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            
+            
+            
             
 
-            <!-- CONTEÚDO AQUI!!! -->
-            <div id="conteudo" class="justify-content-between container">
-                
-                
-
-            </div>
-
-            </main>
             </div>
         </div>
     </div>
-    
-    <div id="tela-login" style="width: 100%;">
+
+    <!-- TELA LOGIN -->
+    <div id="tela-login" class="text-center" style="width: 100%;">
         <!-- FORM -->
       <form class="form-signin">
 
