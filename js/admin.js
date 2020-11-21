@@ -1,10 +1,10 @@
 $(document).ready(function(){
     init();
-    let usuario = [];
+    // let usuario = [];
     function init(){
         inicializarComponentes();
-        sair();
         logar();
+        sair();
     }
 
     function inicializarComponentes(){
@@ -19,6 +19,7 @@ $(document).ready(function(){
     }
 
     function logar(){
+        
         $('#btn-entrar').click(function(){
             let ra = $('#inputUsuario').val();
             let senha = $('#inputSenha').val();
@@ -36,7 +37,7 @@ $(document).ready(function(){
                         window.open("admin2.html","_self");                        
                         let nome = usuario[0].nome;
                         console.log(nome);
-                        $('#lb-nome').text("nome");
+                        $('#lb-nomeadmin').text("nome");
                         // perfil();
                     }
                     

@@ -3,8 +3,8 @@ $(document).ready(function(){
     let usuario = [];
     function init(){
         inicializarComponentes();
-        sair();
         logar();
+        sair();
     }
 
     function inicializarComponentes(){
@@ -14,11 +14,13 @@ $(document).ready(function(){
 
     function sair(){
         $('#btn-sair').click(function(){
-            window.open("login2.html","_self");
+            $('#tela-aluno').hide();
+            $('#tela-login').show();
         });
     }
 
     function logar(){
+        $('#tela-login').hide();
         $('#btn-entrar').click(function(){
             let ra = $('#inputUsuario').val();
             let senha = $('#inputSenha').val();
@@ -32,11 +34,13 @@ $(document).ready(function(){
                     if(resposta == "Erro!"){
                         $('#toast-erro').toast('show');
                     }else{
+                        $('#tela-login').hide();
+                        $('#tela-aluno').show();
                         usuario = JSON.parse(resposta);
-                        window.open("admin2.html","_self");                        
+                        // window.open("admin2.html","_self");                        
                         let nome = usuario[0].nome;
                         console.log(nome);
-                        $('#lb-nome').text("nome");
+                        $('#lb-nome').text(nome);
                         // perfil();
                     }
                     
