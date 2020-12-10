@@ -42,13 +42,11 @@ $(document).ready(function(){
                         $('#tela-login').hide();
                         $('#tela-aluno').show();
                         $('#cont-disciplinas').hide();
-                        usuario = JSON.parse(resposta);
-                        // window.open("admin2.html","_self");   
+                        usuario = JSON.parse(resposta); 
                         let idAluno = usuario[0].idAluno;
                         let ra = usuario[0].ra;
                         let nome = usuario[0].nome;
                         let email = usuario[0].email;
-                        // console.log(nome);
                         $('#lb-nome').text(nome);
                         $('#lb-id').text(ra);
                         $('#lb-email').text(email);
@@ -57,7 +55,6 @@ $(document).ready(function(){
                     
                 },
                 error: function(erro){
-                    // M.toast({html: erro}); 
                     alert(erro);
                 }
             });
