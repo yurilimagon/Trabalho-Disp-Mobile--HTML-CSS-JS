@@ -37,7 +37,7 @@ $(document).ready(function(){
                 },
                 success: function(resposta){
                     if(resposta == "Erro!"){
-                        $('#toast-erro').toast('show');
+                        swal("Erro!", "Login/Senha inválidos", "error");
                     }else{
                         $('#tela-login').hide();
                         $('#tela-aluno').show();
@@ -76,6 +76,29 @@ $(document).ready(function(){
         exibeHome();
     });
 
+    $('#btn-calendario').click(function(){
+        $('.nav-link').removeClass('active');
+        $('#btn-calendario').addClass('active');
+        exibeCalendario(usuario[0].idAluno);
+    });
+
+    $('#btn-solicitacoes').click(function(){
+        $('.nav-link').removeClass('active');
+        $('#btn-solicitacoes').addClass('active');
+        exibeSolicitacoes(usuario[0].idAluno);
+    });
+
+    $('#btn-fazer-solicitacao').click(function(){
+        $('.nav-link').removeClass('active');
+        $('#btn-fazer-solicitacao').addClass('active');
+        solicitacao(usuario[0].idAluno);
+    });
+
+    $('#conteudo').on('click', '#btn-solicitar', function() {
+        var solicitacao = $('#select option:selected').text();
+        fazerSolicitacao(usuario[0].idAluno, solicitacao);
+    });
+
     function exibeDisciplinas(idAluno){
         var conteudo;
         var dados = [];
@@ -110,7 +133,9 @@ $(document).ready(function(){
                         <div class="container d-flex justify-content-center flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                             <h1 class="h2">Disciplinas</h1>
                         </div >
-                        <div class="accordion" id="accordion">${dados}</div>`
+                        <div class="accordion" id="accordion">
+                            ${dados}
+                        </div>`
             $('#conteudo').html(conteudo);
         });
     }
@@ -121,5 +146,112 @@ $(document).ready(function(){
                     </div >`
         $('#conteudo').html(conteudo);
     }
-    
+
+    function exibeCalendario(idAluno){
+        var conteudo;
+        var dados = [];
+        $.getJSON('http://www.felipemaciel.com.br/sys/fatec/appFatec/getCalendario.php?idAluno='+idAluno, function(data){
+            $.each(data, function(chave, valor){
+
+                dados += `<div class="card">
+                            <div class="card-header bg-danger" aria-expanded="true" id="${valor.idCalendario}">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link btn-block text-left" style="color: white;" data-toggle="collapse" 
+                                        data-target="#collapse${valor.idCalendario}" aria-expanded="true" aria-controls="${valor.idCalendario}">
+                                        <i class="material-icons" style="font-size: 1rem;">keyboard_arrow_right </i>${valor.disciplina} --- Data entrega: ${valor.dataEntrega}
+                                </a>
+                            </h2>
+                            </div>
+                        
+                            <div id="collapse${valor.idCalendario}" class="collapse hide" style="background-color: #cfcdcd;" aria-labelledby="${valor.idCalendario}" 
+                                 data-parent="#accordion">
+                                <div class="card-body text-left">
+                                    <p class="mb-1">${valor.tipo}</p>
+                                </div>
+                            </div>
+                        </div>`              
+            });
+            conteudo = `
+                        <div class="container d-flex justify-content-center flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Calendário</h1>
+                        </div >
+                        <div class="accordion" id="accordion">
+                            ${dados}
+                        </div>`
+            $('#conteudo').html(conteudo);    
+        });
+    }
+
+    function exibeSolicitacoes(idAluno){
+        var conteudo;
+        var dados = [];
+        $.getJSON('http://www.felipemaciel.com.br/sys/fatec/appFatec/getSolicitacao.php?idAluno='+idAluno, function(data){
+            $.each(data, function(chave, valor){
+
+                dados += `<div class="card">
+                            <div class="card-header bg-danger" aria-expanded="true" id="${valor.idSolicitacao}">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link btn-block text-left" style="color: white;" data-toggle="collapse" 
+                                        data-target="#collapse${valor.idSolicitacao}" aria-expanded="true" aria-controls="${valor.idSolicitacao}">
+                                        <i class="material-icons" style="font-size: 1rem;">keyboard_arrow_right </i>${valor.numeroProtocolo} - Situação: ${valor.situacao}
+                                </a>
+                            </h2>
+                            </div>
+                        
+                            <div id="collapse${valor.idSolicitacao}" class="collapse hide" style="background-color: #cfcdcd;" aria-labelledby="${valor.idSolicitacao}" 
+                                 data-parent="#accordion">
+                                <div class="card-body text-left">
+                                    <p>${valor.data}</p>
+                                    <p>${valor.solicitacao}</p>
+                                </div>
+                            </div>
+                        </div>`              
+            });
+            conteudo = `
+                        <div class="container d-flex justify-content-center flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Solicitações</h1>
+                        </div >
+                        <div class="accordion" id="accordion">
+                            ${dados}
+                        </div>`
+            $('#conteudo').html(conteudo);    
+        });
+    }
+
+    function solicitacao(idAluno){
+        var conteudo = `<div class="container d-flex justify-content-center flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Fazer Solicitação</h1>
+                        </div >
+                        <div class="form-group">
+                            <label>Tipo de Solicitação</label>
+                            <select class="form-control" id="select">
+                                <option>Atestado de Matrícula</option>
+                                <option>Histórico Escolar</option>
+                                <option>Renovação da Carteirinha Escolar</option>
+                                <option>Segunda Via da Carteirinha Escolar</option>
+                                <option>Declaração de Transferência</option>
+                                <option>Declaração de Conclusão</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+                        <button id="btn-solicitar" type="button" class="btn btn-success">Enviar</button>`
+        $('#conteudo').html(conteudo);
+    }
+
+    function fazerSolicitacao(idAluno, solicitacao){
+        $.ajax({
+            url: "http://www.felipemaciel.com.br/sys/fatec/appFatec/postSolicitacao.php",
+            data: {
+                idAluno: idAluno,
+                solicitacao: solicitacao
+            },
+            success: function(resposta){
+                swal(resposta, solicitacao, "success");
+            }, 
+            error: function(erro){
+                console.log("Erro");
+            }
+        });
+    }
 });
+
